@@ -2,13 +2,28 @@
 
 **Note that the link of the new actively maintained repository is:**
 
-https://github.com/Beliefuture/Index_EAB/
+https://github.com/code4DB/Index_EAB/
 
 **Please "STAR" the new repository if you find this project useful!**
 
-This is the code respository of the testbed proposed in the **Index Advisor (EA&B)** paper, which conducts a comprehensive assessment of the heuristic-based and the learning-based index advisors.
+This is the code repository of the testbed proposed in the **Index Advisor (EA&B)** paper, which conducts a comprehensive assessment of the heuristic-based and the learning-based index advisors. If you like this project, please cite our paper:
 
-***Note that we have released a python package about this testbed at the official open-source website: *[index-eab · PyPI](https://pypi.org/project/index-eab/0.1.0/)*. Therefore, you can use the follwoing command to download it with little effort!**
+```
+@article{zhouVLDB24,
+  author       = {Wei Zhou and
+                  Chen Lin and
+                  Xuanhe Zhou and
+                  Guoliang Li},
+  title        = {Breaking It Down: An In-depth Study of Index Advisors},
+  journal      = {Proc. {VLDB} Endow.},
+  volume       = {17},
+  number       = {10},
+  pages        = {2405--2418},
+  year         = {2024}
+}
+```
+
+***Note that we have released a Python package about this testbed at the official open-source website: *[index-eab · PyPI](https://pypi.org/project/index-eab/0.1.0/)*. Therefore, you can use the following command to download it with little effort!**
 
 ```shell
 pip install index-eab==0.1.0
@@ -31,7 +46,7 @@ The overall code structure of our **Index Advisor (EA&B)** project, where the cr
 ```
 Index_EAB/
 ├── configuration_loader			 											# Module 1: the evaluation settings                 
-│   ├── becnhmark
+│   ├── benchmark
 │   ├── index_advisor
 │   │   ├── heu_run_conf
 │   │   │   ├──xxxx_config.json  # configurations of heuristic-based index advisors
@@ -79,7 +94,7 @@ Index_EAB/
 │   │   │   └── ...
 │   │   ├── mab_selection
 │   │   │   ├── bandits
-│   │   │   ├── simualtion
+│   │   │   ├── simulation
 │   │   │   ├── shared
 │   │   │   │   ├── mab_com.py  # parameters of learning-based index advisors
 │   │   │   │   └── ...
@@ -126,7 +141,7 @@ We introduce the indispensable step, i.e., experiment setup for the experiment e
 
 - Create **the database instance** according to the provided toolkit;
 - Create **the HypoPG extension** on the database instance for the usage of hypothetical index according to [HypoPG/hypopg: Hypothetical Indexes for PostgreSQL (github.com)](https://github.com/HypoPG/hypopg);
-- Create **the python virtual environment**. Specifically, you can utilize the following script and the corresponding file `requirements.txt` is provided under the main directory. Please check the packages required are properly installed.
+- Create **the python virtual environment**. Specifically, you can utilize the following script, and the corresponding file `requirements.txt` is provided under the main directory. Please check the packages required are properly installed.
 
 ```shell
 # Create the virtualenv `TRAP`
@@ -172,13 +187,13 @@ password = -- your password --
 database = -- your database --
 ```
 
-Apart from that, we provide some files including the statistics of the database / benchmark in the directory. For example, the file `configuration_loader/database/schema_tpch.json` stores the schema information of the *TPC-H* benchmark.
+Apart from that, we provide some files, including the statistics of the database / benchmark, in the directory. For example, the file `configuration_loader/database/schema_tpch.json` stores the schema information of the *TPC-H* benchmark.
 
 
 
 ### 2.  Data Preparation
 
-The workload  data provided in `/workload_generator` has already been preprocessed, which involves three types of the workloads,  i.e., **(1) template-based**, **(2) perturbation-based**, and **(3) random**. These data can be utilized for direct evaluation and you can generate your own workload data organized in the following format. 
+The workload  data provided in `/workload_generator` has already been preprocessed, which involves three types of the workloads,  i.e., **(1) template-based**, **(2) perturbation-based**, and **(3) random**. These data can be utilized for direct evaluation, and you can generate your own workload data organized in the following format. 
 
 ```sql
 [
